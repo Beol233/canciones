@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Canciones</title>
+</head>
+<body>
+    <h1>Nueva Canción</h1>
+
+    <form action="/crear_cancion" method="POST">
+        <p>
+            Título:
+            <input type="text" name="titulo" required>
+        </p>
+
+        <p>
+            Artista:
+            <input type="text" name="artista" required>
+        </p>
+
+        <button type="submit">Crear</button>
+    </form>
+
+    <h1>Todas las Canciones</h1>
+
+    <table border="1">
+        <tr>
+            <th>Título</th>
+            <th>Artista</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for cancion in canciones %}
+        <tr>
+            <td>{{ cancion.titulo }}</td>
+            <td>{{ cancion.artista }}</td>
+            <td>
+                <a href="/canciones/{{ cancion.id }}">Ver</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p><a href="/usuarios">Inicio</a></p>
+</body>
+</html>

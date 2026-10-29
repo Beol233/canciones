@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mostrar Canción</title>
+</head>
+<body>
+    <a href="/usuarios">Inicio</a>
+
+    <h1>{{ cancion.titulo }}</h1>
+
+    <h3>Artista: {{ cancion.artista }}</h3>
+
+    <h2>Usuarios que tienen esta canción como favorita</h2>
+
+    <ul>
+        {% for usuario in usuarios %}
+        <li>{{ usuario.nombre }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Agregar Usuario</h2>
+
+    <form action="/canciones/{{ cancion.id }}/agregar_favorito" method="POST">
+        <label>Usuario:</label>
+
+        <select name="usuarios_id">
+            {% for usuario in disponibles %}
+            <option value="{{ usuario.id }}">
+                {{ usuario.nombre }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>
